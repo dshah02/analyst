@@ -1,182 +1,116 @@
-# Analyst - Semantic Search with Jina Embeddings
+# The Verifiable Analyst
 
-This project provides semantic search functionality for Hugging Face datasets using the Jina embeddings v2 base EN model. The system allows you to search through a curated dataset of Hugging Face datasets using natural language queries.
+[Pitch deck](https://docs.google.com/presentation/d/1-LYzf7MsY4tNXtJaHVgQIZeWjZoiEtR8/edit?usp=sharing&ouid=114094351316596866174&rtpof=true&sd=true)
 
-## Features
+*Multi-source data analysis without the risk of hallucinations.*
 
-- **Semantic Search**: Find relevant datasets using natural language queries
-- **Category Filtering**: Search within specific task categories
-- **Similar Dataset Discovery**: Find datasets similar to a given dataset
-- **Fast Vector Search**: Uses FAISS for efficient similarity search
-- **Rich Metadata**: Access to dataset information including downloads, likes, authors, and categories
+> An intelligent, verifiable AI agent that turns messy, multi-source macro & CRM data into trustworthy, reproducible insights—using natural-language questions and code-backed answers.
 
-## Installation
+---
 
-1. Install the required dependencies:
-```bash
-pip install -r requirements.txt
-```
+## Table of Contents
 
-2. Ensure you have the dataset file `dataset_semantic.parquet` in the project directory.
+* [Overview](#overview)
+* [Why It Matters](#why-it-matters)
+* [What It Does](#what-it-does)
+* [How It Works](#how-it-works)
+* [Principles: Verifiability & Reproducibility](#principles-verifiability--reproducibility)
+* [Example Questions](#example-questions)
+* [Competitive Advantage](#competitive-advantage)
+* [Target Users & Markets](#target-users--markets)
+* [Roadmap](#roadmap)
+* [Getting Started (Placeholder)](#getting-started-placeholder)
+* [Contributing](#contributing)
+* [License](#license)
+* [Acknowledgments](#acknowledgments)
 
-## Usage
+---
 
-### Quick Start
+## Overview
 
-Run the demo to see the semantic search in action:
-```bash
-python demo_search.py
-```
+**The Verifiable Analyst** transforms traditional CRM and macro-economic data into an intelligent conversational analytics platform. Ask a question in plain English; get an answer that’s backed by executable code, complete methodology, and citations you can audit.
 
-### Interactive Search
+**Key outcomes**
 
-Run the interactive search interface:
-```bash
-python main.py search
-```
+* Faster time-to-insight (minutes, not days)
+* End-to-end automation from data discovery to synthesized intelligence
+* Confidence by design: every step is transparent and reproducible
 
-Or use the standalone search interface:
-```bash
-python semantic_search.py
-```
+> Built for the Dedalus AI Agents Hackathon (Eragon Track).
 
-### Programmatic Usage
+---
 
-```python
-from semantic_search import SemanticSearchEngine
+## Why It Matters
 
-# Initialize the search engine
-engine = SemanticSearchEngine()
-engine.initialize()
+Organizations spend heavily on slow, manual analysis:
 
-# Search for datasets
-results = engine.search("machine learning datasets", top_k=5)
+* Financial analyst compensation and subscriptions add up
+* Analysis turnaround is **days to weeks**
+* Results can be opaque or non-reproducible
 
-# Search within a specific category
-results = engine.search_by_category("medical data", "professional_medicine", top_k=3)
+*The Verifiable Analyst* collapses this workflow into a single, auditable loop.
 
-# Find similar datasets
-similar = engine.get_similar_datasets("argilla/databricks-dolly-15k-curated-en", top_k=5)
+---
 
-# Get dataset information
-info = engine.get_dataset_info()
-```
+## What It Does
 
-## Dataset Structure
+* **Automated Dataset Discovery**
+  Finds and accesses relevant macro and CRM datasets across authoritative sources.
 
-The `dataset_semantic.parquet` file contains the following columns:
+* **Dynamic Analysis Tool Generation**
+  Produces custom analytical scripts/models tailored to the question at hand.
 
-- `datasetId`: Unique identifier for the dataset
-- `author`: Dataset author/organization
-- `last_modified`: Last modification timestamp
-- `downloads`: Number of downloads
-- `likes`: Number of likes
-- `tags`: Dataset tags
-- `task_categories`: List of task categories
-- `createdAt`: Creation timestamp
-- `card`: Dataset card information
-- `embedding`: Pre-computed Jina embeddings (768-dimensional vectors)
+* **Comprehensive Intelligence Synthesis**
+  Delivers data-driven insights with rigorous method, code, and citations.
 
-## Search Capabilities
+* **Verifiable Results**
+  Every insight ships with the code and steps to reproduce it.
 
-### Basic Search
-Search for datasets using natural language:
-```python
-results = engine.search("computer vision datasets for object detection")
-```
+**Representative use cases**
 
-### Category Filtering
-Search within specific categories:
-```python
-results = engine.search_by_category("medical data", "professional_medicine")
-```
+* **Customer Behavior Analysis**
+  “Which customer segments increased spending during the last quarter?”
 
-### Similar Dataset Discovery
-Find datasets similar to a known dataset:
-```python
-similar = engine.get_similar_datasets("microsoft/DialoGPT-medium")
-```
+* **Market Trend Identification**
+  “How are inflation trends affecting our customer retention rates?”
 
-### Advanced Filtering
-Filter results by minimum similarity score:
-```python
-results = engine.search("NLP", min_score=0.7)
-```
+* **Revenue Attribution**
+  “What macro factors contributed most to our Q3 revenue growth?”
 
-## Performance
+* **Predictive Customer Insights**
+  “Which customers are most at risk if interest rates rise by 2%?”
 
-- **Initialization**: ~2-5 seconds (loads model and builds FAISS index)
-- **Search Speed**: ~10-50ms per query (depending on query complexity)
-- **Memory Usage**: ~500MB-1GB (depending on dataset size)
+---
 
-## Available Categories
+## How It Works
 
-The dataset includes datasets from various categories such as:
-- Machine Learning
-- Natural Language Processing
-- Computer Vision
-- Medical/Healthcare
-- Legal
-- Finance
-- Social Sciences
-- And many more...
+1. **Query Interpretation** – NLP parses questions about economics, markets, or financial trends.
+2. **Data Source Identification** – Agents locate and integrate the most relevant macro datasets.
+3. **Tool Generation** – The system creates bespoke analysis scripts/models for the question.
+4. **Analysis Execution** – Code runs, results are computed, and signals are synthesized.
+5. **Intelligence Delivery** – Outputs include results, code, methodology, and citations.
 
-## Technical Details
+**Architecture**
 
-- **Embedding Model**: `jinaai/jina-embeddings-v2-base-en`
-- **Vector Search**: FAISS with cosine similarity
-- **Embedding Dimension**: 768
-- **Index Type**: FlatIP (Inner Product) for cosine similarity
+* **Agent System:** Dedalus SDK
+* **Core AI:** LLMs with tool-use capabilities
+* **Data Integration:** Multi-source dataset discovery & access
+* **Analysis Engine:** Dynamic tool generation & execution
+* **Interface:** Natural-language query understanding
 
-## File Structure
+---
 
-```
-Analyst/
-├── main.py                 # Main entry point with search demo
-├── semantic_search.py      # Core semantic search engine
-├── demo_search.py         # Demo script
-├── requirements.txt       # Python dependencies
-├── dataset_semantic.parquet # Dataset with embeddings
-├── stage_1.py            # Original stage 1 code
-├── stage_2.py            # Original stage 2 code
-└── README.md             # This file
-```
+## Principles: Verifiability & Reproducibility
 
-## Examples
+* **No blind text** – Every result is derived from executable code.
+* **Auditability** – Code and data sources are visible end-to-end.
+* **Reproducibility** – Anyone can re-run and validate the analysis steps.
+* **Lean-inspired** – Each step implies the next, minimizing waste and ambiguity.
 
-### Example 1: Finding ML Datasets
-```python
-results = engine.search("machine learning datasets for beginners")
-for result in results:
-    print(f"{result['datasetId']} - {result['author']}")
-    print(f"Downloads: {result['downloads']:,}, Score: {result['score']:.3f}")
-```
+---
 
-### Example 2: Medical Dataset Search
-```python
-results = engine.search_by_category("medical imaging", "professional_medicine")
-```
+## Example Questions
 
-### Example 3: Finding Similar Datasets
-```python
-similar = engine.get_similar_datasets("huggingface/CodeBERTa")
-```
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Model Loading Error**: Ensure you have internet connection for first-time model download
-2. **Memory Issues**: The system requires sufficient RAM for the embeddings and FAISS index
-3. **Dataset Not Found**: Ensure `dataset_semantic.parquet` is in the project directory
-
-### Performance Tips
-
-1. The FAISS index is cached after first build for faster subsequent loads
-2. Use specific queries for better results
-3. Filter by categories when possible to narrow down results
-
-## License
-
-This project uses the Jina embeddings model and follows the respective licensing terms.
-# analyst
+* *Customer behavior:* “Show cohort-level spend changes by segment for Q/Q and Y/Y.”
+* *Macro sensitivity:* “Estimate churn risk if CPI rises 1% and rates +200 bps.”
+* *Attribution:* “Attribute Q3 revenue delta across macro factors (CPI, rates,
