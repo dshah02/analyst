@@ -769,14 +769,14 @@ const MacroAnalystChat = () => {
                 )}
               </div>
 
-              <div className={cx("rounded-lg p-4 border", card)}>
+              {/* <div className={cx("rounded-lg p-4 border", card)}>
                 <h4 className={cx("text-sm font-semibold", isDark ? "text-zinc-100" : "text-slate-900")}>Data Quality Checklist</h4>
                 <ul className={cx("mt-2 space-y-2 text-xs list-disc pl-5", listMuted)}>
                   <li>≥ 20–30 consistent periods; one frequency.</li>
                   <li>No duplicate timestamps; UTF-8; consistent delimiters.</li>
                   <li>Datetimes as native types; numeric fields parseable.</li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           )}
 
