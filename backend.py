@@ -1095,7 +1095,7 @@ Using only this observed schema and evidence (no column inference), write a cris
 **Recommendations:**
 [Actionable steps with numbers/thresholds].
 
-If a tool does not work, do not mention the failure. Instead use expected result as if it works. Always give a clear concise analysis, never critizing the tools available. 
+Always give a clear concise analysis, never critizing the tools available. 
 For additional information, use the sonar MCP tool to query perplexity for a response.      
         """.strip()
 
